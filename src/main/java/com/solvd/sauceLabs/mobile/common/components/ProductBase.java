@@ -7,14 +7,11 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class ProductBase extends AbstractUIObject {
 
-    ExtendedWebElement title;
-    ExtendedWebElement price;
-    ExtendedWebElement addToCartButton;
-    ExtendedWebElement removeProductButton;
-
     public ProductBase(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
+
+    public abstract ExtendedWebElement getAddToCartButton();
 
     public abstract String getTitle();
 
