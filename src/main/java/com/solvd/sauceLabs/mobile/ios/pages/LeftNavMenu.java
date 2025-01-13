@@ -1,14 +1,13 @@
 package com.solvd.sauceLabs.mobile.ios.pages;
 
-import com.solvd.sauceLabs.mobile.common.pages.MenuBase;
+import com.solvd.sauceLabs.mobile.common.pages.LeftNavMenuBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 
-@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = MenuBase.class)
-public class Menu extends MenuBase {
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LeftNavMenuBase.class)
+public class LeftNavMenu extends LeftNavMenuBase {
 
     @ExtendedFindBy(iosPredicate = "name == \"test-WEBVIEW\"")
     ExtendedWebElement webViewButton;
@@ -18,6 +17,10 @@ public class Menu extends MenuBase {
     ExtendedWebElement aboutButton;
     @ExtendedFindBy(iosPredicate = "name == \"test-LOGOUT\"")
     ExtendedWebElement logOutButton;
+
+    public LeftNavMenu(WebDriver driver) {
+        super(driver);
+    }
 
 
     @Override
@@ -40,7 +43,5 @@ public class Menu extends MenuBase {
         return logOutButton;
     }
 
-    public Menu(WebDriver driver) {
-        super(driver);
-    }
+
 }

@@ -1,8 +1,9 @@
 package com.solvd.sauceLabs;
 
 import com.solvd.sauceLabs.mobile.common.pages.HomePageBase;
+import com.solvd.sauceLabs.mobile.common.pages.LeftNavMenuBase;
 import com.solvd.sauceLabs.mobile.common.pages.LoginPageBase;
-import com.solvd.sauceLabs.mobile.common.pages.MenuBase;
+
 import com.zebrunner.carina.core.IAbstractTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,7 +16,7 @@ public class LoginTests extends TestBase implements IAbstractTest {
         login.enterUserName("standard_user");
         login.enterPassword("secret_sauce");
         HomePageBase home = login.clickLoginButton();
-        MenuBase menu = home.clickMenuButton();
+        LeftNavMenuBase menu = home.clickMenuButton();
         Assert.assertTrue(menu.getLogOutButton().isElementPresent(), "The Log out button is not present");
 
     }

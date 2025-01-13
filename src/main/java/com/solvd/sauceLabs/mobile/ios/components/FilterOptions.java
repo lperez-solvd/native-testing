@@ -1,7 +1,6 @@
 package com.solvd.sauceLabs.mobile.ios.components;
 
 import com.solvd.sauceLabs.mobile.common.components.FilterOptionsBase;
-import com.solvd.sauceLabs.mobile.common.pages.HomePageBase;
 import com.solvd.sauceLabs.mobile.ios.pages.HomePage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
@@ -10,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 public class FilterOptions extends FilterOptionsBase {
 
-    @ExtendedFindBy(iosPredicate = "name == \"Name (A to Z)\"")
+    @ExtendedFindBy(iosPredicate = "name == \"Price (low to high)\"")
     ExtendedWebElement optionToClick;
 
     public FilterOptions(WebDriver driver, SearchContext searchContext) {
@@ -18,8 +17,7 @@ public class FilterOptions extends FilterOptionsBase {
     }
 
     @Override
-    public HomePage clickOnOption() {
+    public void clickOnOption() {
         optionToClick.click();
-        return null;
     }
 }

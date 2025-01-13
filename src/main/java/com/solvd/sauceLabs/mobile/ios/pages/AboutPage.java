@@ -1,7 +1,6 @@
 package com.solvd.sauceLabs.mobile.ios.pages;
 
 import com.solvd.sauceLabs.mobile.common.pages.AboutPageBase;
-import com.solvd.sauceLabs.mobile.common.pages.MenuBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;

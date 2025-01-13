@@ -1,17 +1,16 @@
 package com.solvd.sauceLabs.mobile.ios.pages;
 
-import com.solvd.sauceLabs.mobile.common.components.ProductBase;
+import com.solvd.sauceLabs.mobile.common.components.ProductListItemBase;
 import com.solvd.sauceLabs.mobile.common.pages.CartPageBase;
 import com.solvd.sauceLabs.mobile.common.pages.HomePageBase;
-import com.solvd.sauceLabs.mobile.common.pages.MenuBase;
+import com.solvd.sauceLabs.mobile.common.pages.LeftNavMenuBase;
 import com.solvd.sauceLabs.mobile.ios.components.FilterOptions;
-import com.solvd.sauceLabs.mobile.ios.components.Product;
+import com.solvd.sauceLabs.mobile.ios.components.ProductListItem;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +23,7 @@ public class HomePage extends HomePageBase implements IMobileUtils {
     Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
 
     @ExtendedFindBy(iosPredicate = "name == \"test-Item\"")
-    List<Product> allProducts;
+    List<ProductListItem> allProducts;
 
     @ExtendedFindBy(iosPredicate = "name == \"test-Menu\"")
     ExtendedWebElement menuButton;
@@ -42,7 +41,7 @@ public class HomePage extends HomePageBase implements IMobileUtils {
     ExtendedWebElement loginErrorMessage;
 
     @Override
-    public List<Product> getProductList() {
+    public List<ProductListItem> getProductList() {
         return allProducts;
     }
 
@@ -52,7 +51,7 @@ public class HomePage extends HomePageBase implements IMobileUtils {
 
     @Override
     public CartPageBase clickCartButton() {
-        tap(cartButton.getLocation().getX() + 30, menuButton.getLocation().getY() + 35);
+        tap(cartButton.getLocation().getX() + 30, cartButton.getLocation().getY() + 35);
         return initPage(CartPageBase.class);
     }
 
@@ -63,10 +62,10 @@ public class HomePage extends HomePageBase implements IMobileUtils {
     }
 
     @Override
-    public MenuBase clickMenuButton() {
+    public LeftNavMenuBase clickMenuButton() {
         tap(menuButton.getLocation().getX() + 1, menuButton.getLocation().getY() + 24);
 
-        return initPage(MenuBase.class);
+        return initPage(LeftNavMenuBase.class);
     }
 
     @Override
@@ -75,7 +74,7 @@ public class HomePage extends HomePageBase implements IMobileUtils {
     }
 
     public void addProductByTitle(String text) {
-        Optional<? extends ProductBase> product = super.findProductByTitle(text);
+        Optional<? extends ProductListItemBase> product = super.findProductByTitle(text);
         product.ifPresent(p -> {
             LOGGER.info("The element has benn found");
             swipe(p.getAddToCartButton());

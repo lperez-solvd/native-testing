@@ -14,5 +14,5 @@ public abstract class FilterOptionsBase extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public abstract HomePageBase clickOnOption();
+    public abstract void clickOnOption();
 }

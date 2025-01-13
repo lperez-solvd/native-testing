@@ -1,15 +1,14 @@
 package com.solvd.sauceLabs.mobile.ios.components;
 
-import com.solvd.sauceLabs.mobile.common.components.ProductBase;
-import com.solvd.sauceLabs.mobile.common.pages.HomePageBase;
+import com.solvd.sauceLabs.mobile.common.components.ProductListItemBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 
-@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = ProductBase.class)
-public class Product extends ProductBase {
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = ProductListItemBase.class)
+public class ProductListItem extends ProductListItemBase {
 
     @ExtendedFindBy(iosPredicate = "name == \"test-Item title\"")
     ExtendedWebElement title;
@@ -24,7 +23,7 @@ public class Product extends ProductBase {
     ExtendedWebElement removeProductButton;
 
 
-    public Product(WebDriver driver, SearchContext searchContext) {
+    public ProductListItem(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
