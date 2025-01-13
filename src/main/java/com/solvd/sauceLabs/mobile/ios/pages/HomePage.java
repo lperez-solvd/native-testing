@@ -11,12 +11,17 @@ import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Optional;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = HomePageBase.class)
 public class HomePage extends HomePageBase implements IMobileUtils {
+
+    Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
 
     @ExtendedFindBy(iosPredicate = "name == \"test-Item\"")
     List<Product> allProducts;
@@ -72,6 +77,7 @@ public class HomePage extends HomePageBase implements IMobileUtils {
     public void addProductByTitle(String text) {
         Optional<? extends ProductBase> product = super.findProductByTitle(text);
         product.ifPresent(p -> {
+            LOGGER.info("The element has benn found");
             swipe(p.getAddToCartButton());
             p.clickAddToCartButton();
         });
