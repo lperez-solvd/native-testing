@@ -1,5 +1,6 @@
 package com.solvd.sauceLabs.mobile.ios.pages;
 
+import com.solvd.sauceLabs.mobile.common.pages.DrawingPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -66,9 +67,9 @@ public class DrawingPage extends DrawingPageBase implements IMobileUtils {
         return signaturePadByImage.getLocation().toString() + signaturePadByImage.getName();
     }
 
-    public String checkForElementPresence() {
-        waitUntil(d -> signaturePadByImage.isElementPresent(),20);
-        return String.valueOf(signaturePadByImage.isElementPresent(20));
+    public boolean checkForElementPresence() {
+        waitUntil(d -> signaturePadByImage.isElementPresent(), 20);
+        return signaturePadByImage.isElementPresent(20);
     }
 
 

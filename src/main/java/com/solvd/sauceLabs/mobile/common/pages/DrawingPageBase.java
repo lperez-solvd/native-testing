@@ -1,8 +1,9 @@
-package com.solvd.sauceLabs.mobile.ios.pages;
+package com.solvd.sauceLabs.mobile.common.pages;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
+
 
 public abstract class DrawingPageBase extends AbstractPage {
 
@@ -27,6 +28,6 @@ public abstract class DrawingPageBase extends AbstractPage {
 
     public abstract String returnElementData();
 
-    public abstract String checkForElementPresence();
+    public abstract boolean checkForElementPresence();
 
 }

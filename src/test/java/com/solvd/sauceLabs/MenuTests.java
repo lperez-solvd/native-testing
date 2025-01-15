@@ -1,7 +1,6 @@
 package com.solvd.sauceLabs;
 
 import com.solvd.sauceLabs.mobile.common.pages.*;
-import com.solvd.sauceLabs.mobile.ios.pages.DrawingPageBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -29,9 +28,6 @@ public class MenuTests extends TestBase {
         drawing.clickSaveButton();
         drawing.clickOkButton();
         drawing.clickClearButton();
-        //Assert.assertTrue(drawing.findElementByImage(), "The element hasn't been found");
-        // drawing.checkForElementPresence();
-        //drawing.returnElementData();
 
     }
 
@@ -44,9 +40,8 @@ public class MenuTests extends TestBase {
 
         drawing.makeSignature();
 
-        //Assert.assertTrue(drawing.findElementByImage(), "The element hasn't been found");
-        //drawing.checkForElementPresence();
         System.out.println(drawing.returnElementData());
+        Assert.assertTrue(drawing.checkForElementPresence(),"The element is not present so the image hasn't been recognized");
     }
 
     @Test
@@ -70,7 +65,7 @@ public class MenuTests extends TestBase {
         webView.sendUrl("www.google.com");
         WebViewTargetPageBase targetPage = webView.clickGoToButton();
 
-        Assert.assertTrue(targetPage.isLogoPresent(), "The expected logo is not present"); ;
+        Assert.assertTrue(targetPage.isLogoPresent(), "The expected logo is not present");
 
     }
 }
