@@ -17,11 +17,17 @@ public class LeftNavMenu extends LeftNavMenuBase {
     ExtendedWebElement aboutButton;
     @ExtendedFindBy(iosPredicate = "name == \"test-LOGOUT\"")
     ExtendedWebElement logOutButton;
+    @ExtendedFindBy(iosPredicate = "name == \"test-DRAWING\"")
+    ExtendedWebElement drawButton;
 
     public LeftNavMenu(WebDriver driver) {
         super(driver);
     }
 
+    @Override
+    protected ExtendedWebElement getDrawButton() {
+        return drawButton;
+    }
 
     @Override
     protected ExtendedWebElement getWebViewButton() {

@@ -67,11 +67,11 @@ public class ProductTests extends TestBase {
 
         ProductListItemBase firstProduct = home.getProductByIndex(0);
 
-        LOGGER.info("Processing price comparition...");
+        LOGGER.info("Processing price comparison...");
         home.getProductList().forEach((item) ->
                 sa.assertTrue(home.compareProductPrices(item, firstProduct) == 1 || home.compareProductPrices(item, firstProduct) == 0, "There is some items more expensive than the first one")
         );
-        LOGGER.info("Pricerice comparition ended");
+        LOGGER.info("Price comparison ended");
 
         sa.assertAll();
 
