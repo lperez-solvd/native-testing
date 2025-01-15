@@ -40,7 +40,6 @@ public class MenuTests extends TestBase {
 
         drawing.makeSignature();
 
-        System.out.println(drawing.returnElementData());
         Assert.assertTrue(drawing.checkForElementPresence(),"The element is not present so the image hasn't been recognized");
     }
 

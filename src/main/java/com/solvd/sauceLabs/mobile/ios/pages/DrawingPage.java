@@ -22,7 +22,8 @@ public class DrawingPage extends DrawingPageBase implements IMobileUtils {
     ExtendedWebElement successfullySavedOkButton;
     @ExtendedFindBy(image = "images/myScreenshotRESIZEDx2.png")
     ExtendedWebElement signaturePadByImage;
-
+    @ExtendedFindBy(image = "images/mySavedImageSMALL.png")
+    ExtendedWebElement testImage;
 
     @Override
     public ExtendedWebElement getSignaturePadByImage() {
@@ -71,7 +72,6 @@ public class DrawingPage extends DrawingPageBase implements IMobileUtils {
         waitUntil(d -> signaturePadByImage.isElementPresent(), 20);
         return signaturePadByImage.isElementPresent(20);
     }
-
 
     public DrawingPage(WebDriver driver) {
         super(driver);
