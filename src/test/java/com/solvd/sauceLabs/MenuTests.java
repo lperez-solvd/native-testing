@@ -1,11 +1,10 @@
 package com.solvd.sauceLabs;
 
-import com.solvd.sauceLabs.mobile.common.pages.AboutPageBase;
-import com.solvd.sauceLabs.mobile.common.pages.HomePageBase;
-import com.solvd.sauceLabs.mobile.common.pages.LeftNavMenuBase;
+import com.solvd.sauceLabs.mobile.common.pages.*;
 import com.solvd.sauceLabs.mobile.ios.pages.DrawingPageBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class MenuTests extends TestBase {
 
@@ -51,9 +50,29 @@ public class MenuTests extends TestBase {
     }
 
     @Test
-    public void usingGeoLocation () {
+    public void usingGeoLocation() {
         HomePageBase home = fastLogin();
         LeftNavMenuBase menu = home.clickMenuButton();
+        GeoLocationPageViewBase geoPage = menu.clickGeoLocationButton();
+
+        SoftAssert sa = new SoftAssert();
+        sa.assertEquals(geoPage.getLongitudeFromScreen(), geoPage.getLocationLongitude(), "The two longitudes doesn't match");
+        sa.assertEquals(geoPage.getLatitudeFromScreen(), geoPage.getLocationLatitude(), "The two latitudes doesn't match");
+
+        sa.assertAll();
+    }
+
+    @Test
+    public void usingWebViewer() {
+        HomePageBase home = fastLogin();
+        LeftNavMenuBase menu = home.clickMenuButton();
+        WebViewPageBase webView = menu.clickWebViewButton();
+        webView.sendUrl("www.google.com");
+        WebViewTargetPageBase targetPage = webView.clickGoToButton();
+
+        Assert.assertTrue(targetPage.isLogoPresent(), "The expected logo is not present"); ;
 
     }
 }
+
+

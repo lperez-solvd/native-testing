@@ -28,9 +28,9 @@ public abstract class LeftNavMenuBase extends AbstractPage implements IMobileUti
         return initPage(WebViewPageBase.class);
     }
 
-    public GeoLocationPageView clickGeoLocationButton() {
+    public GeoLocationPageViewBase clickGeoLocationButton() {
         getGeoLocationButton().click();
-        return initPage(GeoLocationPageView.class);
+        return initPage(GeoLocationPageViewBase.class);
     }
 
     public AboutPageBase clickAboutButton() {
