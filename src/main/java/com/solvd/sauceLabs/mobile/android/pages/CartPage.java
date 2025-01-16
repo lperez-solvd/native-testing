@@ -25,7 +25,6 @@ public class CartPage extends CartPageBase implements IMobileUtils {
     ExtendedWebElement cartProductsNumber;
 
 
-
     @Override
     protected List<? extends ProductListItem> getProductsOnCart() {
         return productList;
@@ -48,4 +47,12 @@ public class CartPage extends CartPageBase implements IMobileUtils {
         return initPage(CheckOutPageBase.class);
     }
 
+    @Override
+    public int getProductsCount() {
+        if (cartProductsNumber.isElementPresent()) {
+            return Integer.parseInt(cartProductsNumber.getText());
+        } else {
+            return 0;
+        }
+    }
 }

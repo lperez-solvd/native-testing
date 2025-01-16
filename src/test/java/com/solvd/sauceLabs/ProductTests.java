@@ -66,10 +66,11 @@ public class ProductTests extends TestBase {
         filterOptions.clickOnOption();
 
         ProductListItemBase firstProduct = home.getProductByIndex(0);
+        String firstProductPrice = firstProduct.getPrice();
 
         LOGGER.info("Processing price comparison...");
         home.getProductList().forEach((item) ->
-                sa.assertTrue(home.compareProductPrices(item, firstProduct) == 1 || home.compareProductPrices(item, firstProduct) == 0, "There is some items more expensive than the first one")
+                sa.assertTrue(home.compareProductPrices(item, firstProductPrice) == 1 || home.compareProductPrices(item, firstProductPrice) == 0, "There is some items more expensive than the first one")
         );
         LOGGER.info("Price comparison ended");
 

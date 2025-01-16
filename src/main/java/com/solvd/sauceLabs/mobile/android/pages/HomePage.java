@@ -1,11 +1,12 @@
 package com.solvd.sauceLabs.mobile.android.pages;
 
+import com.solvd.sauceLabs.mobile.android.components.FilterOptions;
 import com.solvd.sauceLabs.mobile.android.components.ProductListItem;
 import com.solvd.sauceLabs.mobile.common.components.ProductListItemBase;
 import com.solvd.sauceLabs.mobile.common.pages.CartPageBase;
 import com.solvd.sauceLabs.mobile.common.pages.HomePageBase;
 import com.solvd.sauceLabs.mobile.common.pages.LeftNavMenuBase;
-import com.solvd.sauceLabs.mobile.ios.components.FilterOptions;
+
 
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
@@ -44,10 +45,16 @@ public class HomePage extends HomePageBase implements IMobileUtils {
     @ExtendedFindBy(accessibilityId = "test-Toggle")
     private ExtendedWebElement testToggleButton;
 
+    private boolean isListMode = false;
+
     @Override
     public List<ProductListItem> getProductList() {
-        testToggleButton.click();
-        return allProducts;
+        if (isListMode) {
+            return allProducts;
+        } else {
+            clickToggleButton();
+            return allProducts;
+        }
     }
 
     public HomePage(WebDriver driver) {
@@ -83,8 +90,30 @@ public class HomePage extends HomePageBase implements IMobileUtils {
 
         product.ifPresentOrElse(p -> {
             LOGGER.info("The element has been found");
+            swipeUp(5);
             swipe(p.getAddToCartButton());
             p.clickAddToCartButton();
-        }, () -> LOGGER.info("No product has been found"));
+        }, () -> {
+            // First attempt
+            clickToggleButton();
+
+            // Try one more time
+            Optional<? extends ProductListItemBase> retryProduct = super.findProductByTitle(text);
+            retryProduct.ifPresentOrElse(p -> {
+                LOGGER.info("The element has been found after retry");
+                swipe(p.getAddToCartButton());
+                p.clickAddToCartButton();
+            }, () -> {
+                LOGGER.info("Product still not found after retry.");
+            });
+        });
+
+    }
+
+    // Helpers
+
+    private void clickToggleButton() {
+        isListMode = !isListMode;
+        testToggleButton.click();
     }
 }

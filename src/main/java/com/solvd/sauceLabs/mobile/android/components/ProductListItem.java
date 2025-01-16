@@ -2,6 +2,7 @@ package com.solvd.sauceLabs.mobile.android.components;
 
 import com.solvd.sauceLabs.mobile.common.components.ProductListItemBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.SearchContext;
@@ -9,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ProductListItemBase.class)
-public class ProductListItem extends ProductListItemBase {
+public class ProductListItem extends ProductListItemBase implements IMobileUtils {
 
     @FindBy(xpath = "//android.widget.TextView[@content-desc=\"test-Item title\"]")
     ExtendedWebElement title;
@@ -43,6 +44,8 @@ public class ProductListItem extends ProductListItemBase {
 
     @Override
     public String getPrice() {
+
+        swipe(price);
         return price.getText();
     }
 
