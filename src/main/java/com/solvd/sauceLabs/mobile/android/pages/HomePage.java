@@ -1,11 +1,12 @@
 package com.solvd.sauceLabs.mobile.android.pages;
 
+import com.solvd.sauceLabs.mobile.android.components.ProductListItem;
 import com.solvd.sauceLabs.mobile.common.components.ProductListItemBase;
 import com.solvd.sauceLabs.mobile.common.pages.CartPageBase;
 import com.solvd.sauceLabs.mobile.common.pages.HomePageBase;
 import com.solvd.sauceLabs.mobile.common.pages.LeftNavMenuBase;
 import com.solvd.sauceLabs.mobile.ios.components.FilterOptions;
-import com.solvd.sauceLabs.mobile.ios.components.ProductListItem;
+
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -22,7 +23,7 @@ import java.util.Optional;
 public class HomePage extends HomePageBase implements IMobileUtils {
     Logger LOGGER = LoggerFactory.getLogger(com.solvd.sauceLabs.mobile.ios.pages.HomePage.class);
 
-    @ExtendedFindBy(accessibilityId = "test-PRODUCTS")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Item\"]")
     List<ProductListItem> allProducts;
 
     @ExtendedFindBy(accessibilityId = "test-Menu")
@@ -37,11 +38,15 @@ public class HomePage extends HomePageBase implements IMobileUtils {
     @ExtendedFindBy(accessibilityId = "Selector container")
     FilterOptions filterOptions;
 
-    @FindBy(xpath= "//android.widget.TextView[@text=\"Username and password do not match any user in this service.\"]")
+    @FindBy(xpath = "//android.widget.TextView[@text=\"Username and password do not match any user in this service.\"]")
     ExtendedWebElement loginErrorMessage;
+
+    @ExtendedFindBy(accessibilityId = "test-Toggle")
+    private ExtendedWebElement testToggleButton;
 
     @Override
     public List<ProductListItem> getProductList() {
+        testToggleButton.click();
         return allProducts;
     }
 
@@ -75,10 +80,11 @@ public class HomePage extends HomePageBase implements IMobileUtils {
 
     public void addProductByTitle(String text) {
         Optional<? extends ProductListItemBase> product = super.findProductByTitle(text);
-        product.ifPresent(p -> {
-            LOGGER.info("The element has benn found");
+
+        product.ifPresentOrElse(p -> {
+            LOGGER.info("The element has been found");
             swipe(p.getAddToCartButton());
             p.clickAddToCartButton();
-        });
+        }, () -> LOGGER.info("No product has been found"));
     }
 }
