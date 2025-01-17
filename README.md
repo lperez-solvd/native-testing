@@ -1,5 +1,9 @@
 ### This project
-* JAVA
+#### Native Test for Android and iOS
+###### (sauceLabs.mobile package)
+<br/>
+
+* [JAVA]()
 * [Apache Maven 3.6.0+](http://maven.apache.org/)
 * [Carina](https://zebrunner.github.io/carina/)
 * [Sauce Labs](https://github.com/saucelabs/sample-app-mobile/releases/tag/2.7.1)
