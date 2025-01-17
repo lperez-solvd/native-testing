@@ -2,7 +2,6 @@ package com.solvd.sauceLabs.mobile.ios.pages;
 
 import com.solvd.sauceLabs.mobile.common.pages.CheckOutFinishPageBase;
 import com.solvd.sauceLabs.mobile.common.pages.CheckOutSuccessPageBase;
-import com.solvd.sauceLabs.mobile.common.pages.LoginPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;

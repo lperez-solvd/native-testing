@@ -22,7 +22,7 @@ public abstract class LoginPageBase extends AbstractPage {
 
     public abstract HomePageBase clickLoginButton();
 
-    public abstract HomePageBase clickFastLoginButton();
+    public abstract void clickFastLoginButton();
 
 
 }

@@ -4,7 +4,6 @@ import com.solvd.sauceLabs.mobile.common.components.FilterOptionsBase;
 import com.solvd.sauceLabs.mobile.common.components.ProductListItemBase;
 
 import com.solvd.sauceLabs.mobile.common.pages.*;
-import com.solvd.sauceLabs.mobile.ios.pages.HomePage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -14,7 +13,7 @@ import org.testng.asserts.SoftAssert;
 
 public class ProductTests extends TestBase {
 
-    Logger LOGGER = LoggerFactory.getLogger(ProductTests.class);
+    final Logger LOGGER = LoggerFactory.getLogger(ProductTests.class);
 
 
     @Test

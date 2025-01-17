@@ -1,21 +1,19 @@
 package com.solvd.sauceLabs.mobile.ios.pages;
 
 import com.solvd.sauceLabs.mobile.common.pages.GeoLocationPageViewBase;
-import com.solvd.sauceLabs.mobile.common.pages.HomePageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.html5.Location;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = GeoLocationPageViewBase.class)
 public class GeoLocationPageView extends GeoLocationPageViewBase implements IMobileUtils {
 
-    Logger LOGGER = LoggerFactory.getLogger(GeoLocationPageView.class);
+    final Logger LOGGER = LoggerFactory.getLogger(GeoLocationPageView.class);
 
     @ExtendedFindBy(iosPredicate = "name == \"test-latitude\"")
     ExtendedWebElement latitude;

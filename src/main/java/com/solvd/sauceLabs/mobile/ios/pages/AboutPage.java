@@ -6,6 +6,7 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
 
+@SuppressWarnings("unused")
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = AboutPageBase.class)
 public class AboutPage extends AboutPageBase {
 

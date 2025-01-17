@@ -20,7 +20,7 @@ import java.util.Optional;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = HomePageBase.class)
 public class HomePage extends HomePageBase implements IMobileUtils {
 
-    Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
+    final Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
 
     @ExtendedFindBy(iosPredicate = "name == \"test-Item\"")
     List<ProductListItem> allProducts;

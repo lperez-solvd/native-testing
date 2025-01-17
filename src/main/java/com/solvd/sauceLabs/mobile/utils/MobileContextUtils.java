@@ -55,6 +55,7 @@ public class MobileContextUtils implements IDriverPool {
         ((SupportsContextSwitching) driver).context(desiredContext);
     }
 
+    @SuppressWarnings("CanBeFinal")
     public enum View {
         NATIVE("NATIVE_APP"),
         WEB_CARINA("WEBVIEW_com.solvd.carinademoapplication"),

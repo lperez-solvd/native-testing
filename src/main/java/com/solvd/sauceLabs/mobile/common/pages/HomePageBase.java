@@ -46,7 +46,7 @@ public abstract class HomePageBase extends AbstractPage {
         System.out.println(product1.toString() + firstProductPrice);
         BigDecimal product1Price = new BigDecimal(product1.getPrice().replaceAll("[^0-9.]", ""));
         BigDecimal product2Price = new BigDecimal(firstProductPrice.replaceAll("[^0-9.]", ""));
-        System.out.println("Comparition result: " + product1Price.compareTo(product2Price));
+        System.out.println("Comparison result: " + product1Price.compareTo(product2Price));
         return product1Price.compareTo(product2Price);
 
     }

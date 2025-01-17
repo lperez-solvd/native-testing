@@ -1,6 +1,5 @@
 package com.solvd.sauceLabs.mobile.ios.pages;
 
-import com.solvd.sauceLabs.mobile.common.pages.AboutPageBase;
 import com.solvd.sauceLabs.mobile.common.pages.WebViewTargetPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;

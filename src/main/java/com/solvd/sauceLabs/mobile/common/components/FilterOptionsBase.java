@@ -1,6 +1,5 @@
 package com.solvd.sauceLabs.mobile.common.components;
 
-import com.solvd.sauceLabs.mobile.common.pages.HomePageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;

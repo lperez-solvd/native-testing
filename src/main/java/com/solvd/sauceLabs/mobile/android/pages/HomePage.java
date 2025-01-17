@@ -22,7 +22,7 @@ import java.util.Optional;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = HomePageBase.class)
 public class HomePage extends HomePageBase implements IMobileUtils {
-    Logger LOGGER = LoggerFactory.getLogger(com.solvd.sauceLabs.mobile.ios.pages.HomePage.class);
+    final Logger LOGGER = LoggerFactory.getLogger(com.solvd.sauceLabs.mobile.ios.pages.HomePage.class);
 
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Item\"]")
     List<ProductListItem> allProducts;

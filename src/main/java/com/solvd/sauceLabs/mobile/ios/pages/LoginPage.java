@@ -38,12 +38,12 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
         return initPage(HomePageBase.class);
     }
 
-    public HomePageBase clickFastLoginButton() {
+    public void clickFastLoginButton() {
         swipe(fastLoginButton);
         fastLoginButton.click();
         swipe(fastLoginButton, Direction.UP);
         fastLoginButton.click();
-        return initPage(HomePageBase.class);
+
     }
 
 

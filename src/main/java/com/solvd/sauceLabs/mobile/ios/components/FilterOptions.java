@@ -1,7 +1,6 @@
 package com.solvd.sauceLabs.mobile.ios.components;
 
 import com.solvd.sauceLabs.mobile.common.components.FilterOptionsBase;
-import com.solvd.sauceLabs.mobile.ios.pages.HomePage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.SearchContext;

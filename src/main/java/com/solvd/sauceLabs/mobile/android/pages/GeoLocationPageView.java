@@ -6,14 +6,13 @@ import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.html5.Location;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = GeoLocationPageViewBase.class)
 public class GeoLocationPageView extends GeoLocationPageViewBase implements IMobileUtils {
 
-    Logger LOGGER = LoggerFactory.getLogger(GeoLocationPageView.class);
+    final Logger LOGGER = LoggerFactory.getLogger(GeoLocationPageView.class);
 
     @ExtendedFindBy(accessibilityId = "test-latitude")
     ExtendedWebElement latitude;
