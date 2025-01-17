@@ -14,7 +14,7 @@ public class MenuTests extends TestBase {
         LeftNavMenuBase menu = home.clickMenuButton();
         AboutPageBase about = menu.clickAboutButton();
 
-        Assert.assertEquals(about.getTitleText(), "Website andmobiletesting atevery stage ofdevelopment", "The web page title is not the expected");
+        Assert.assertEquals(about.getTitleText(), "Website and mobile testing at every stage of development", "The web page title is not the expected");
     }
 
     @Test(enabled = false)
@@ -31,7 +31,7 @@ public class MenuTests extends TestBase {
 
     }
 
-    @Test(enabled = true)
+    @Test()
     public void drawingAndFindingImageTest() {
         HomePageBase home = fastLogin();
 

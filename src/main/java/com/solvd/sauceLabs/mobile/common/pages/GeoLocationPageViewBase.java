@@ -8,8 +8,6 @@ public abstract class GeoLocationPageViewBase extends AbstractPage {
         super(driver);
     }
 
-
-
     public abstract double getLocationLongitude();
 
     public abstract double getLocationLatitude();
