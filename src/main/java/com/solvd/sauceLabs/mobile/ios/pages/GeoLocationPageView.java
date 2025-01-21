@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = GeoLocationPageViewBase.class)
 public class GeoLocationPageView extends GeoLocationPageViewBase implements IMobileUtils {
 
-    final Logger LOGGER = LoggerFactory.getLogger(GeoLocationPageView.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GeoLocationPageView.class);
 
     @ExtendedFindBy(iosPredicate = "name == \"test-latitude\"")
     ExtendedWebElement latitude;
@@ -30,15 +30,17 @@ public class GeoLocationPageView extends GeoLocationPageViewBase implements IMob
 
     public double getLocationLongitude() {
         setLocation();
-        LOGGER.info("Phone longitude = {}", getLocation().getLongitude());
-        return getLocation().getLongitude();
+        double longitude = getLocation().getLongitude();
+        LOGGER.info("Phone longitude = {}", longitude);
+        return longitude;
     }
 
     public double getLocationLatitude() {
         setLocation();
-        LOGGER.info("Phone latitude = {}", getLocation().getLatitude());
+        double latitude = getLocation().getLatitude();
+        LOGGER.info("Phone latitude = {}", latitude);
 
-        return getLocation().getLatitude();
+        return latitude;
     }
 
     public double getLongitudeFromScreen() {
@@ -47,7 +49,9 @@ public class GeoLocationPageView extends GeoLocationPageViewBase implements IMob
         }
         waitUntil(d -> longitude.isElementPresent(), 50);
 
-        return Double.parseDouble(longitude.getText());
+        String longitudeValue = longitude.getText();
+
+        return handleParse(longitudeValue);
     }
 
     public double getLatitudeFromScreen() {
@@ -55,7 +59,9 @@ public class GeoLocationPageView extends GeoLocationPageViewBase implements IMob
             cancelAlert();
         }
         waitUntil(d -> latitude.isElementPresent(), 50);
-        return Double.parseDouble(latitude.getText());
+
+        String latitudeValue = latitude.getText();
+        return handleParse(latitudeValue);
     }
 
 

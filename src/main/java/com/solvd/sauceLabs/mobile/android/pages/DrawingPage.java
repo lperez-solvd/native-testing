@@ -41,17 +41,17 @@ public class DrawingPage extends DrawingPageBase implements IMobileUtils {
 
         int startPointX = signaturePad.getLocation().getX() + 70;
         int startPointY = signaturePad.getLocation().getY() + 55;
-        dragAndDrop(startPointX, startPointY, startPointX, startPointY + 110*3, Duration.ofSeconds(1), Duration.ofSeconds(1));
-        dragAndDrop(startPointX, startPointY + 110*3, startPointX + 100*3, startPointY + 110*3, Duration.ofSeconds(1), Duration.ofSeconds(1));
-        dragAndDrop(startPointX + 100*3, startPointY + 110*3, startPointX + 100*3, startPointY, Duration.ofSeconds(1), Duration.ofSeconds(1));
-        dragAndDrop(startPointX + 100*3, startPointY, startPointX, startPointY, Duration.ofSeconds(1), Duration.ofSeconds(1));
+        dragAndDrop(startPointX, startPointY, startPointX, startPointY + 110 * 3, Duration.ofSeconds(1), Duration.ofSeconds(1));
+        dragAndDrop(startPointX, startPointY + 110 * 3, startPointX + 100 * 3, startPointY + 110 * 3, Duration.ofSeconds(1), Duration.ofSeconds(1));
+        dragAndDrop(startPointX + 100 * 3, startPointY + 110 * 3, startPointX + 100 * 3, startPointY, Duration.ofSeconds(1), Duration.ofSeconds(1));
+        dragAndDrop(startPointX + 100 * 3, startPointY, startPointX, startPointY, Duration.ofSeconds(1), Duration.ofSeconds(1));
 
-        int centerX = startPointX + 50*3;
-        int centerY = startPointY + 55*3;
+        int centerX = startPointX + 50 * 3;
+        int centerY = startPointY + 55 * 3;
 
-        dragAndDrop(startPointX, centerY, startPointX + 100*3, centerY, Duration.ofSeconds(1), Duration.ofSeconds(1));
+        dragAndDrop(startPointX, centerY, startPointX + 100 * 3, centerY, Duration.ofSeconds(1), Duration.ofSeconds(1));
 
-        dragAndDrop(centerX, startPointY, centerX, startPointY + 110*3, Duration.ofSeconds(1), Duration.ofSeconds(1));
+        dragAndDrop(centerX, startPointY, centerX, startPointY + 110 * 3, Duration.ofSeconds(1), Duration.ofSeconds(1));
 
     }
 

@@ -10,6 +10,7 @@ public abstract class WebViewPageBase extends AbstractPage {
     }
 
     public abstract void sendUrl(String text);
+
     public abstract WebViewTargetPageBase clickGoToButton();
 
 }

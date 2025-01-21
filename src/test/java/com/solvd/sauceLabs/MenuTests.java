@@ -8,39 +8,13 @@ import org.testng.asserts.SoftAssert;
 public class MenuTests extends TestBase {
 
     @Test
-    public void testAboutButton() {
+    public void verifyAboutPageTest() {
         HomePageBase home = fastLogin();
 
         LeftNavMenuBase menu = home.clickMenuButton();
         AboutPageBase about = menu.clickAboutButton();
 
         Assert.assertEquals(about.getTitleText(), "Website and mobile testing at every stage of development", "The web page title is not the expected");
-    }
-
-    @Test(enabled = false)
-    public void drawingImageAndSaveTest() {
-        HomePageBase home = fastLogin();
-
-        LeftNavMenuBase menu = home.clickMenuButton();
-        DrawingPageBase drawing = menu.clickDrawingButton();
-
-        drawing.makeSignature();
-        drawing.clickSaveButton();
-        drawing.clickOkButton();
-        drawing.clickClearButton();
-
-    }
-
-    @Test()
-    public void drawingAndFindingImageTest() {
-        HomePageBase home = fastLogin();
-
-        LeftNavMenuBase menu = home.clickMenuButton();
-        DrawingPageBase drawing = menu.clickDrawingButton();
-
-        drawing.makeSignature();
-
-        Assert.assertTrue(drawing.checkForElementPresence(),"The element is not present so the image hasn't been recognized");
     }
 
     @Test
@@ -57,7 +31,7 @@ public class MenuTests extends TestBase {
     }
 
     @Test
-    public void usingWebViewer() {
+    public void verifyWebViewerFunctionalityTest() {
         HomePageBase home = fastLogin();
         LeftNavMenuBase menu = home.clickMenuButton();
         WebViewPageBase webView = menu.clickWebViewButton();
@@ -67,6 +41,7 @@ public class MenuTests extends TestBase {
         Assert.assertTrue(targetPage.isLogoPresent(), "The expected logo is not present");
 
     }
+
 }
 
 

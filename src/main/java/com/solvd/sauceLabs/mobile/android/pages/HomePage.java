@@ -22,7 +22,7 @@ import java.util.Optional;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = HomePageBase.class)
 public class HomePage extends HomePageBase implements IMobileUtils {
-    final Logger LOGGER = LoggerFactory.getLogger(com.solvd.sauceLabs.mobile.ios.pages.HomePage.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
 
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Item\"]")
     List<ProductListItem> allProducts;
@@ -63,7 +63,7 @@ public class HomePage extends HomePageBase implements IMobileUtils {
 
     @Override
     public CartPageBase clickCartButton() {
-        tap(cartButton.getLocation().getX() + 30, cartButton.getLocation().getY() + 35);
+        cartButton.click();
         return initPage(CartPageBase.class);
     }
 
@@ -75,8 +75,7 @@ public class HomePage extends HomePageBase implements IMobileUtils {
 
     @Override
     public LeftNavMenuBase clickMenuButton() {
-        tap(menuButton.getLocation().getX() + 1, menuButton.getLocation().getY() + 24);
-
+        menuButton.click();
         return initPage(LeftNavMenuBase.class);
     }
 
@@ -89,24 +88,26 @@ public class HomePage extends HomePageBase implements IMobileUtils {
         Optional<? extends ProductListItemBase> product = super.findProductByTitle(text);
 
         product.ifPresentOrElse(p -> {
-            LOGGER.info("The element has been found");
-            swipeUp(5);
-            swipe(p.getAddToCartButton());
-            p.clickAddToCartButton();
-        }, () -> {
-            // First attempt
-            clickToggleButton();
+                    LOGGER.info("The element has been found");
+                    swipeUp(5);
+                    swipe(p.getAddToCartButton());
+                    p.clickAddToCartButton();
+                },
+                () -> {
+                    // First attempt
+                    clickToggleButton();
 
-            // Try one more time
-            Optional<? extends ProductListItemBase> retryProduct = super.findProductByTitle(text);
-            retryProduct.ifPresentOrElse(p -> {
-                LOGGER.info("The element has been found after retry");
-                swipe(p.getAddToCartButton());
-                p.clickAddToCartButton();
-            }, () -> {
-                LOGGER.info("Product still not found after retry.");
-            });
-        });
+                    // Try one more time
+                    Optional<? extends ProductListItemBase> retryProduct = super.findProductByTitle(text);
+                    retryProduct.ifPresentOrElse(
+                            p -> {
+                                LOGGER.info("The element has been found after retry");
+                                swipe(p.getAddToCartButton());
+                                p.clickAddToCartButton();
+                            }, () -> {
+                                LOGGER.info("Product still not found after retry.");
+                            });
+                });
 
     }
 

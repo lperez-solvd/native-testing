@@ -10,6 +10,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.List;
+
 
 public class ProductTests extends TestBase {
 
@@ -35,16 +37,15 @@ public class ProductTests extends TestBase {
     }
 
     @Test
-    public void buyTwoProductsTest() {
+    public void buyMultipleProductsTest() {
         SoftAssert sa = new SoftAssert();
 
         HomePageBase home = fastLogin();
-        home.addProductByTitle("Sauce Labs Backpack");
-        home.addProductByTitle("Test.allTheThings() T-Shirt (Red)");
+        List<String> productsToAdd = List.of("Sauce Labs Backpack", "Test.allTheThings() T-Shirt (Red)");
+        home.addProductsByTitle(productsToAdd);
         CartPageBase cartPage = home.clickCartButton();
 
-        // add extra test to ensure al products has been added
-        sa.assertEquals(cartPage.getProductsCount(), 2, "The number of added products is not the expected");
+        sa.assertEquals(cartPage.getProductsCount(), productsToAdd.size(), "The number of added products is not the expected");
 
         CheckOutPageBase checkOut = cartPage.clickCheckOutButton();
         checkOut.enterInfoToInputs("Lucas", "Perez", "1990");
@@ -57,7 +58,7 @@ public class ProductTests extends TestBase {
     }
 
     @Test
-    public void filterProductsTest() {
+    public void filterProductsByAscendantPriceTest() {
         SoftAssert sa = new SoftAssert();
 
         HomePageBase home = fastLogin();
@@ -68,8 +69,9 @@ public class ProductTests extends TestBase {
         String firstProductPrice = firstProduct.getPrice();
 
         LOGGER.info("Processing price comparison...");
-        home.getProductList().forEach((item) ->
-                sa.assertTrue(home.compareProductPrices(item, firstProductPrice) == 1 || home.compareProductPrices(item, firstProductPrice) == 0, "There is some items more expensive than the first one")
+        home.getProductList().forEach(
+                (item) ->
+                        sa.assertTrue(home.compareProductPrices(item, firstProductPrice) == 1 || home.compareProductPrices(item, firstProductPrice) == 0, "There is some items more expensive than the first one")
         );
         LOGGER.info("Price comparison ended");
 

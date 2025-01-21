@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = GeoLocationPageViewBase.class)
 public class GeoLocationPageView extends GeoLocationPageViewBase implements IMobileUtils {
 
-    final Logger LOGGER = LoggerFactory.getLogger(GeoLocationPageView.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GeoLocationPageView.class);
 
     @ExtendedFindBy(accessibilityId = "test-latitude")
     ExtendedWebElement latitude;
@@ -41,7 +41,8 @@ public class GeoLocationPageView extends GeoLocationPageViewBase implements IMob
         }
         waitUntil(d -> longitude.isElementPresent(), 50);
 
-        return Double.parseDouble(longitude.getText());
+        String longitudeValue = longitude.getText();
+        return handleParse(longitudeValue);
     }
 
     public double getLatitudeFromScreen() {
@@ -49,7 +50,9 @@ public class GeoLocationPageView extends GeoLocationPageViewBase implements IMob
             acceptAlert();
         }
         waitUntil(d -> latitude.isElementPresent(), 50);
-        return Double.parseDouble(latitude.getText());
+
+        String latitudeValue = latitude.getText();
+        return handleParse(latitudeValue);
     }
 
 

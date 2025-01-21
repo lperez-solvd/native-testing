@@ -38,7 +38,7 @@ public abstract class HomePageBase extends AbstractPage {
     public abstract void addProductByTitle(String text);
 
     /**
-     * @param product1 Product to be compared
+     * @param product1          Product to be compared
      * @param firstProductPrice Product to be compared price
      * @return If product 1 price is bigger than product 2, will return 1, if product 2 is bigger will return -1 if are equal will return 0
      */
@@ -49,6 +49,12 @@ public abstract class HomePageBase extends AbstractPage {
         System.out.println("Comparison result: " + product1Price.compareTo(product2Price));
         return product1Price.compareTo(product2Price);
 
+    }
+
+    public void addProductsByTitle(List<String> productTitles) {
+        for (String title : productTitles) {
+            addProductByTitle(title);
+        }
     }
 
 }

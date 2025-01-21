@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = HomePageBase.class)
@@ -51,7 +52,14 @@ public class HomePage extends HomePageBase implements IMobileUtils {
 
     @Override
     public CartPageBase clickCartButton() {
-        tap(cartButton.getLocation().getX() + 30, cartButton.getLocation().getY() + 35);
+
+        System.out.println();
+        if (Objects.equals(getDevice().getName(), "iPhone 16")) {
+            tap(cartButton.getLocation().getX() + 30, cartButton.getLocation().getY() + 35);
+        } else {
+            cartButton.click();
+        }
+
         return initPage(CartPageBase.class);
     }
 
@@ -63,7 +71,12 @@ public class HomePage extends HomePageBase implements IMobileUtils {
 
     @Override
     public LeftNavMenuBase clickMenuButton() {
-        tap(menuButton.getLocation().getX() + 1, menuButton.getLocation().getY() + 24);
+        if (Objects.equals(getDevice().getName(), "iPhone 16")) {
+            tap(menuButton.getLocation().getX() + 1, menuButton.getLocation().getY() + 24);
+        } else {
+            menuButton.click();
+        }
+
 
         return initPage(LeftNavMenuBase.class);
     }

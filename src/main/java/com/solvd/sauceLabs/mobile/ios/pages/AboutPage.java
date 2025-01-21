@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = AboutPageBase.class)
 public class AboutPage extends AboutPageBase {
 
-    @ExtendedFindBy (iosPredicate = "value == '1'")
+    @ExtendedFindBy(iosPredicate = "value == '1'")
     ExtendedWebElement aboutTitle;
 
     public AboutPage(WebDriver driver) {
