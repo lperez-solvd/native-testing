@@ -18,7 +18,7 @@ public class MenuTests extends TestBase {
     }
 
     @Test
-    public void usingGeoLocation() {
+    public void verifyGeoLocationFunctionalityTest() {
         HomePageBase home = fastLogin();
         LeftNavMenuBase menu = home.clickMenuButton();
         GeoLocationPageViewBase geoPage = menu.clickGeoLocationButton();

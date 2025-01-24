@@ -17,11 +17,13 @@ public class ProductTests extends TestBase {
 
     final Logger LOGGER = LoggerFactory.getLogger(ProductTests.class);
 
+    private static final String productToBuyTitle = "Test.allTheThings() T-Shirt (Red)";
+
 
     @Test
     public void addProductToCartTest() {
         HomePageBase home = fastLogin();
-        home.addProductByTitle("Test.allTheThings() T-Shirt (Red)");
+        home.addProductByTitle(productToBuyTitle);
         CartPageBase cartPage = home.clickCartButton();
         Assert.assertEquals(cartPage.getProductsCount(), 1, "The number of items in the cart is not the expected");
     }
@@ -29,7 +31,7 @@ public class ProductTests extends TestBase {
     @Test
     public void discardProductTest() {
         HomePageBase home = fastLogin();
-        home.addProductByTitle("Test.allTheThings() T-Shirt (Red)");
+        home.addProductByTitle(productToBuyTitle);
         CartPageBase cartPage = home.clickCartButton();
         ProductListItemBase product = cartPage.getProductByIndex(0);
         product.clickRemoveProductButton();
@@ -41,7 +43,7 @@ public class ProductTests extends TestBase {
         SoftAssert sa = new SoftAssert();
 
         HomePageBase home = fastLogin();
-        List<String> productsToAdd = List.of("Sauce Labs Backpack", "Test.allTheThings() T-Shirt (Red)");
+        List<String> productsToAdd = List.of("Sauce Labs Backpack", productToBuyTitle);
         home.addProductsByTitle(productsToAdd);
         CartPageBase cartPage = home.clickCartButton();
 

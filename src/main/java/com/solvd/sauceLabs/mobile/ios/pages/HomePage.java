@@ -53,7 +53,6 @@ public class HomePage extends HomePageBase implements IMobileUtils {
     @Override
     public CartPageBase clickCartButton() {
 
-        System.out.println();
         if (Objects.equals(getDevice().getName(), "iPhone 16")) {
             tap(cartButton.getLocation().getX() + 30, cartButton.getLocation().getY() + 35);
         } else {

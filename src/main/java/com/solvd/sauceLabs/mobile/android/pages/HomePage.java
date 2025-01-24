@@ -49,12 +49,10 @@ public class HomePage extends HomePageBase implements IMobileUtils {
 
     @Override
     public List<ProductListItem> getProductList() {
-        if (isListMode) {
-            return allProducts;
-        } else {
+        if (!isListMode) {
             clickToggleButton();
-            return allProducts;
         }
+        return allProducts;
     }
 
     public HomePage(WebDriver driver) {

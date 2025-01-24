@@ -35,8 +35,6 @@ public class CartPage extends CartPageBase implements IMobileUtils {
     }
 
     public ProductListItem getProductByIndex(int index) {
-        productList.forEach(el -> System.out.println(el.toString()));
-        System.out.println(productList.get(index).toString());
         return productList.get(index);
     }
 
